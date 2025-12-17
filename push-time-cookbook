@@ -3,6 +3,7 @@
 # Author: Bryan Phillips
 
 ## Add these step in your Chef Courier instance and assign to 1 to n nodes as needed.
+## Use shell-interpreter for all three steps
 
 #STEP 1:
 {
