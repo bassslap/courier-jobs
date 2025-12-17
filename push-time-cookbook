@@ -29,3 +29,9 @@
     "cd /tmp/cookbook-lock && sudo chef-client -z -j /tmp/attributes.json --chef-license accept-silent"
   ]
 }
+
+### TEST 
+timedatectl status
+chronyc sources -v
+systemctl status chronyd
+cat /etc/chrony/chrony.conf
