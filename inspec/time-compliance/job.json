@@ -1,0 +1,135 @@
+{
+  "item": {
+    "actions": {
+      "accessMode": "agent",
+      "steps": [
+        {
+          "command": {
+            "args": {
+              "path": "https://github.com/bassslap/courier-jobs/tree/main/inspec/time-compliance"
+            },
+            "exec": "scan"
+          },
+          "conditions": [],
+          "description": "",
+          "expectedInputs": {},
+          "failureBehavior": {
+            "action": "retryThenFail",
+            "retryBackoffStrategy": {
+              "arguments": [],
+              "delaySeconds": 0,
+              "type": "linear"
+            }
+          },
+          "inputs": {
+            "exec": "scan"
+          },
+          "interpreter": {
+            "name": "chef-platform/inspec-interpreter",
+            "skill": {
+              "maxVersion": "20.0.0",
+              "minVersion": "1.0.0"
+            }
+          },
+          "limits": {
+            "cores": 0,
+            "cpu": 1,
+            "timeoutSeconds": 0
+          },
+          "name": "1. GIT TIME INSPEC",
+          "outputFieldRules": {
+            "INSPEC_VALUE": {
+              "expression": "0 successful",
+              "extractMethod": "regEx",
+              "required": true,
+              "sensitive": false,
+              "source": "stdout",
+              "sourceType": "output"
+            }
+          },
+          "retryCount": 2
+        },
+        {
+          "command": {
+            "linux": [
+              "sleep 10"
+            ]
+          },
+          "conditions": [
+            {
+              "inputName": "INSPEC_VALUE",
+              "negate": false,
+              "operator": "eq",
+              "value": "0 successful"
+            }
+          ],
+          "description": "",
+          "expectedInputs": {},
+          "failureBehavior": {
+            "action": "retryThenFail",
+            "retryBackoffStrategy": {
+              "arguments": [],
+              "delaySeconds": 1,
+              "type": "linear"
+            }
+          },
+          "inputs": {},
+          "interpreter": {
+            "name": "chef-platform/shell-interpreter",
+            "skill": {
+              "maxVersion": "1.0.7",
+              "minVersion": "1.0.0"
+            }
+          },
+          "limits": {
+            "cores": 0,
+            "cpu": 1,
+            "timeoutSeconds": 0
+          },
+          "name": "PUSH INSPEC SCAN",
+          "outputFieldRules": {},
+          "retryCount": 2
+        }
+      ]
+    },
+    "createdAt": "2025-12-18T20:57:03.901658Z",
+    "description": "RUN INSPEC TIME 2",
+    "exceptionReasons": [],
+    "exceptionRules": [],
+    "executionCount": 1,
+    "id": "f1716dab-95e3-43aa-ae55-096f789431e2",
+    "modifiedAt": "2025-12-18T20:57:10.05675Z",
+    "name": "RUN INSPEC TIME 2",
+    "nextExecutionTime": "0001-01-01T00:00:00Z",
+    "scheduleRule": "immediate",
+    "status": "completed",
+    "target": {
+      "executionType": "sequential",
+      "groups": [
+        {
+          "batchSize": {
+            "type": "percent",
+            "value": 100
+          },
+          "distributionMethod": "batching",
+          "earlyTermination": false,
+          "filter": null,
+          "filterId": "00000000-0000-0000-0000-000000000000",
+          "listId": "bf0a60d6-08d8-4922-8ec3-1bcab1cf677a",
+          "nodeIdentifiers": null,
+          "nodeListType": "savedList",
+          "successCriteria": [
+            {
+              "numRuns": {
+                "type": "percent",
+                "value": 100
+              },
+              "status": "success"
+            }
+          ],
+          "timeoutSeconds": 240
+        }
+      ]
+    }
+  }
+}
