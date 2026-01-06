@@ -1,6 +1,6 @@
 {
   "item": {
-    "id": "fb69a67c-10a3-4f5e-a43e-816dcff08f3c",
+    "id": "fb69a67c-10a3-4f5e-a43e-816dcff08f3c",   ### EXAMPLE JOB ID
     "name": "INSPEC:Time compliance_v0.1.2 (InSpec from GitHub)",
     "description": "RUN THE INSPEC TIME",
     "scheduleRule": "immediate",
@@ -40,7 +40,7 @@
           "earlyTermination": false,
           "filter": null,
           "filterId": "00000000-0000-0000-0000-000000000000",
-          "listId": "bf0a60d6-08d8-4922-8ec3-1bcab1cf677a",
+          "listId": "bf0a60d6-08d8-4922-8ec3-1bcab1cf677a",  ### Example of a saved Node List ID for 1 to n nodes
           "nodeIdentifiers": null,
           "nodeListType": "savedList",
           "successCriteria": [
